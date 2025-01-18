@@ -15,11 +15,11 @@ dynamic "egress" { # looping ingress block
 }
 
 dynamic "ingress" { # looping ingress block
-    for_each = var.inbound_rules # looping inbound_rules resource
+    for_each = var.ingress_rules # looping inbound_rules resource
     content {
         from_port        = ingress.value["from_port"] # block-name.value["key-name"]
         to_port          = ingress.value["to_port"]
-        protocol         = inress.value["protocol"]
+        protocol         = ingress.value["protocol"]
         cidr_blocks      = ingress.value["cidr_blocks"]
     }
 }
